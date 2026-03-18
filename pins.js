@@ -14,32 +14,47 @@
 
 const PINS = [
 
-  // ── ESEMPIO — modifica o cancella ──
-  {
-    id: 1,
-    title: "Milano",
-    date: "Marzo 2025",
-    lat: 45.4654,
-    lng: 9.1859,
-    description: "Prima pila. Quartiere Isola, su un muro dietro la ferrovia. Blu elettrico, trovata ancora dopo tre mesi.",
-    images: [
-      // "images/milano/1.jpg",
-      // "images/milano/2.jpg",
-      // "images/milano/3.jpg",
-    ]
-  },
+    // ── ESEMPIO — modifica o cancella ──
+    {
+        id: 1,
+        title: "Torino",
+        date: "Marzo 2026",
+        lat: 45.070900886937814,
+        lng: 7.6852575163260255,
+        description: "La prima Pila. Grande soddisfazione ma ancora molto lavoro da fare per migliorare la pila, La pila è tutto",
+        images: [
+            "images/torino/torino-1.jpeg",
+            // "images/milano/2.jpg",
+            // "images/milano/3.jpg",
+        ]
+    },
 
-  // ── AGGIUNGI ALTRE PILE QUI ──
-  // {
-  //   id: 2,
-  //   title: "Roma",
-  //   date: "Aprile 2025",
-  //   lat: 41.9028,
-  //   lng: 12.4964,
-  //   description: "...",
-  //   images: [
-  //     "images/roma/1.jpg",
-  //   ]
-  // },
+    {
+        id: 2,
+        title: "Perugia",
+        date: "Marzo 2026",
+        lat: 43.110750348606935,
+        lng: 12.390804224284588,
+        description: "In via delle gotiche troverai sicuramente qualche Pila, le altre cercale in città",
+        images: [
+            "images/perugia/perugia-1.jpeg",
+            "images/perugia/perugia-2.jpeg",
+            // "images/milano/3.jpg",
+        ]
+    },
+
+
+    // ── AGGIUNGI ALTRE PILE QUI ──
+    // {
+    //   id: 2,
+    //   title: "Roma",
+    //   date: "Aprile 2025",
+    //   lat: 41.9028,
+    //   lng: 12.4964,
+    //   description: "...",
+    //   images: [
+    //     "images/roma/1.jpg",
+    //   ]
+    // },
 
 ];
