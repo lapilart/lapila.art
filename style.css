@@ -435,25 +435,34 @@ body.map-body {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 700px) {
+  html:has(.hero),
+  body:has(.hero) {
+    overflow: hidden;
+    height: 100%;
+  }
+
   .hero {
+    height: 100dvh;
+    overflow: hidden;
     grid-template-columns: 1fr;
-    grid-template-rows: 45vh 1fr auto;
+    grid-template-rows: 1fr auto auto;
   }
   .hero-left {
     grid-row: 2;
-    padding: 1rem 1.5rem 1rem;
+    padding: 0.75rem 1.5rem;
   }
   .hero-right {
     grid-row: 1;
     padding-top: var(--nav-h);
+    min-height: 0;
   }
   .hero-title { font-size: 28vw; }
   .hero-bar {
     grid-row: 3;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.25rem;
-    padding: 1.25rem 1.5rem;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
   }
   .nav-links { gap: 1.5rem; }
   .manifesto-wrap { padding-top: calc(var(--nav-h) + 3rem); }
