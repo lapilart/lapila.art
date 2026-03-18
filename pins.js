@@ -18,7 +18,7 @@ const PINS = [
     {
         id: 1,
         title: "Torino",
-        date: "Marzo 2026",
+        date: "2026",
         lat: 45.070900886937814,
         lng: 7.6852575163260255,
         description: "La prima Pila. Grande soddisfazione ma ancora molto lavoro da fare per migliorare la pila, La pila è tutto",
@@ -32,7 +32,7 @@ const PINS = [
     {
         id: 2,
         title: "Perugia",
-        date: "Marzo 2026",
+        date: "2026",
         lat: 43.110750348606935,
         lng: 12.390804224284588,
         description: "In via delle gotiche troverai sicuramente qualche Pila, le altre cercale in città",
