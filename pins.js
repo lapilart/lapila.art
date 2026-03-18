@@ -43,7 +43,6 @@ const PINS = [
         ]
     },
 
-
     // ── AGGIUNGI ALTRE PILE QUI ──
     // {
     //   id: 2,

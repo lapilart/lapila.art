@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelli — La Pila</title>
+
+  <!-- SEO -->
+  <meta name="description" content="I modelli 3D de La Pila: oggetti stampati, colorati a mano e incollati sui muri delle città.">
+  <meta name="author" content="La Pila">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lapilart.github.io/lapila.art/modelli.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="La Pila">
+  <meta property="og:title" content="Modelli — La Pila">
+  <meta property="og:description" content="I modelli 3D de La Pila: oggetti stampati, colorati a mano e incollati sui muri delle città.">
+  <meta property="og:url" content="https://lapilart.github.io/lapila.art/modelli.html">
+  <meta property="og:locale" content="it_IT">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Modelli — La Pila">
+  <meta name="twitter:description" content="I modelli 3D de La Pila: oggetti stampati, colorati a mano e incollati sui muri delle città.">
+
+  <!-- Tema e favicon -->
+  <meta name="theme-color" content="#111111">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">La Pila</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="manifesto.html">Manifesto</a>
+      <a href="modelli.html" class="active">Modelli</a>
+      <a href="mappa.html">Mappa</a>
+    </div>
+  </nav>
+
+  <div class="modelli-wrap">
+    <span class="manifesto-label">Modelli</span>
+    <div id="modelli-grid" class="modelli-grid"></div>
+  </div>
+
+  <script src="modelli.js"></script>
+  <script>
+    const grid = document.getElementById('modelli-grid');
+
+    MODELLI.forEach(m => {
+      const card = document.createElement('div');
+      card.className = 'modello-card';
+      card.innerHTML = `
+        <div class="modello-viewer">
+          <model-viewer
+            src="${m.file}"
+            alt="${m.title}"
+            auto-rotate
+            auto-rotate-delay="0"
+            rotation-per-second="18deg"
+            camera-controls
+            touch-action="pan-y"
+            shadow-intensity="0"
+            exposure="1"
+            tone-mapping="neutral"
+            style="width:100%;height:100%;background:transparent;"
+          ></model-viewer>
+        </div>
+        <div class="modello-info">
+          <h2 class="modello-title">${m.title}</h2>
+          <p class="modello-desc">${m.description}</p>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
