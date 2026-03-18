@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mappa — La Pila</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="map-body">
+
+  <nav>
+    <a href="index.html" class="nav-logo">La Pila</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="manifesto.html">Manifesto</a>
+      <a href="mappa.html" class="active">Mappa</a>
+    </div>
+  </nav>
+
+  <div id="map"></div>
+
+  <!-- Modal -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal">
+
+      <!-- Galleria immagini -->
+      <div id="gallery-container"></div>
+
+      <!-- Intestazione -->
+      <div class="modal-header">
+        <div>
+          <div id="modal-title" class="modal-title"></div>
+          <div id="modal-date" class="modal-date"></div>
+        </div>
+        <button id="modal-close" class="modal-close">&#215;</button>
+      </div>
+
+      <!-- Descrizione -->
+      <div class="modal-body">
+        <p id="modal-desc" class="modal-desc"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Dati pin -->
+  <script src="pins.js"></script>
+  <!-- Logica mappa -->
+  <script src="map.js"></script>
+
+</body>
+</html>

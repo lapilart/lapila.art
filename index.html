@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Pila</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- model-viewer — Google's 3D web component -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">La Pila</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="manifesto.html">Manifesto</a>
+      <a href="mappa.html">Mappa</a>
+    </div>
+  </nav>
+
+  <main class="hero">
+    <div class="hero-left">
+      <h1 class="hero-title">LA<br><span class="accent">PILA</span></h1>
+    </div>
+
+    <div class="hero-right">
+      <model-viewer
+        src="lapilahome.glb"
+        alt="La Pila — modello 3D"
+        auto-rotate
+        auto-rotate-delay="0"
+        rotation-per-second="20deg"
+        camera-controls
+        touch-action="pan-y"
+        shadow-intensity="0"
+        exposure="1"
+        tone-mapping="neutral"
+        style="width:100%;height:100%;background:transparent;"
+      ></model-viewer>
+    </div>
+
+    <div class="hero-bar">
+      <p class="hero-desc">
+        Modelli 3D stampati, colorati a mano,<br>
+        incollati sui muri delle città del mondo.
+      </p>
+      <a href="mappa.html" class="btn">Vedi la mappa →</a>
+    </div>
+  </main>
+
+</body>
+</html>
