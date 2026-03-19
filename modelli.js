@@ -13,9 +13,16 @@ const MODELLI = [
 
   {
     id: 1,
-    title: "Vieni a prendere un pò di energia",
-    description: "Il modello originale. Forma essenziale da cui è tutto partito. Rappresenta una Pila che ti invita ad entrare in un portale magico.",
+    title: "La porta",
+    description: "Il primo modello. Forma essenziale da cui è tutto partito. Rappresenta una Pila che ti invita ad entrare in un portale magico.",
     file: "models/porta_v1.glb",
+  },
+
+  {
+    id: 2,
+    title: "L'onda",
+    description: "La pila non si fa comandare..",
+    file: "models/lapila_surf_onda_v2.glb",
   },
 
   // ── AGGIUNGI ALTRI MODELLI QUI ──
