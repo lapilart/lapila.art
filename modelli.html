@@ -29,7 +29,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
   <link rel="stylesheet" href="style.css">
-  <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+
 </head>
 <body>
 
@@ -47,28 +47,68 @@
     MODELLI.forEach(m => {
       const card = document.createElement('div');
       card.className = 'modello-card';
+
+      // ── Galleria immagini ──
+      let mediaHTML = '';
+      if (m.images && m.images.length > 0) {
+        if (m.images.length === 1) {
+          mediaHTML = `
+            <div class="modello-media">
+              <img src="${m.images[0]}" alt="${m.title}" class="modello-img">
+            </div>`;
+        } else {
+          const slides = m.images.map((src, i) =>
+            `<img src="${src}" alt="${m.title} ${i + 1}" class="modello-img modello-slide${i === 0 ? ' active' : ''}" data-index="${i}">`
+          ).join('');
+          const dots = m.images.map((_, i) =>
+            `<button class="modello-dot${i === 0 ? ' active' : ''}" data-index="${i}" aria-label="Immagine ${i + 1}"></button>`
+          ).join('');
+          mediaHTML = `
+            <div class="modello-media modello-slider" data-current="0">
+              ${slides}
+              <button class="modello-arrow modello-arrow-prev" aria-label="Precedente">&#8592;</button>
+              <button class="modello-arrow modello-arrow-next" aria-label="Successiva">&#8594;</button>
+              <div class="modello-dots">${dots}</div>
+            </div>`;
+        }
+      } else {
+        mediaHTML = `<div class="modello-media modello-media--empty"></div>`;
+      }
+
+      // ── Download ──
+      const downloadHTML = m.downloadable
+        ? `<a class="modello-download" href="${m.file}" download>Scarica modello</a>`
+        : '';
+
       card.innerHTML = `
-        <div class="modello-viewer">
-          <model-viewer
-            src="${m.file}"
-            alt="${m.title}"
-            camera-controls
-            interaction-prompt="none"
-            environment-image="neutral"
-            shadow-intensity="1"
-            shadow-softness="0.7"
-            exposure="0.2"
-            tone-mapping="commerce"
-            loading="lazy"
-            style="width:100%;height:100%;background:transparent;"
-          ></model-viewer>
-        </div>
+        ${mediaHTML}
         <div class="modello-info">
           <h2 class="modello-title">${m.title}</h2>
           <p class="modello-desc">${m.description}</p>
+          ${downloadHTML}
         </div>
       `;
       grid.appendChild(card);
+    });
+
+    // ── Logica slider ──
+    document.querySelectorAll('.modello-slider').forEach(slider => {
+      let current = 0;
+      const slides = slider.querySelectorAll('.modello-slide');
+      const dots = slider.querySelectorAll('.modello-dot');
+      const total = slides.length;
+
+      function goTo(n) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (n + total) % total;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      slider.querySelector('.modello-arrow-prev').addEventListener('click', () => goTo(current - 1));
+      slider.querySelector('.modello-arrow-next').addEventListener('click', () => goTo(current + 1));
+      dots.forEach(dot => dot.addEventListener('click', () => goTo(+dot.dataset.index)));
     });
   </script>
 
