@@ -5,8 +5,8 @@
 //  Per aggiungere una nuova pila:
 //  1. Copia il blocco tra { ... } qui sotto
 //  2. Modifica i valori
-//  3. Per le immagini: metti i file nella cartella /images/
-//     e scrivi il percorso, es: "images/roma/foto1.jpg"
+//  3. Per le immagini: metti i file nella cartella /assets/images/pins/
+//     e scrivi il percorso, es: "assets/images/pins/roma/foto1.jpg"
 //
 //  Le coordinate (lat, lng) le trovi su Google Maps:
 //  tasto destro sul punto → "Che cosa c'è qui?" → copia i numeri
@@ -23,9 +23,9 @@ const PINS = [
         lng: 7.6852575163260255,
         description: "La prima Pila. Grande soddisfazione ma ancora molto lavoro da fare per migliorare la pila, La pila è tutto",
         images: [
-            "images/torino/torino-1.jpeg",
-            // "images/milano/2.jpg",
-            // "images/milano/3.jpg",
+            "assets/images/pins/torino/torino-1.jpeg",
+            // "assets/images/pins/milano/2.jpg",
+            // "assets/images/pins/milano/3.jpg",
         ]
     },
 
@@ -37,9 +37,9 @@ const PINS = [
         lng: 12.390804224284588,
         description: "In via delle gotiche troverai sicuramente qualche Pila, le altre cercale in città",
         images: [
-            "images/perugia/perugia-1.jpeg",
-            "images/perugia/perugia-2.jpeg",
-            // "images/milano/3.jpg",
+            "assets/images/pins/perugia/perugia-1.jpeg",
+            "assets/images/pins/perugia/perugia-2.jpeg",
+            // "assets/images/pins/milano/3.jpg",
         ]
     },
 
@@ -52,7 +52,7 @@ const PINS = [
     //   lng: 12.4964,
     //   description: "...",
     //   images: [
-    //     "images/roma/1.jpg",
+    //     "assets/images/pins/roma/1.jpg",
     //   ]
     // },
 

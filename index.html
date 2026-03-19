@@ -45,8 +45,8 @@
 
     <div class="hero-right">
       <model-viewer
-        src="lapilahome.glb"
         alt="La Pila — modello 3D"
+        loading="lazy"
         auto-rotate
         auto-rotate-delay="2000"
         rotation-per-second="5deg"
@@ -63,7 +63,23 @@
     </div>
 
     <script>
+      // ── Modelli casuali homepage ──────────────────────────────────────
+      // Aggiungi qui i file .glb presenti in assets/models/pages/home/
+      const HOME_MODELS = [
+        "assets/models/pages/home/lapilahome.glb",
+      ];
+
+      const SESSION_KEY = "home_model";
+      let chosen = sessionStorage.getItem(SESSION_KEY);
+      if (!chosen || !HOME_MODELS.includes(chosen)) {
+        chosen = HOME_MODELS[Math.floor(Math.random() * HOME_MODELS.length)];
+        sessionStorage.setItem(SESSION_KEY, chosen);
+      }
+
       const mv = document.querySelector('model-viewer');
+      mv.src = chosen;
+      // ─────────────────────────────────────────────────────────────────
+
       const bar = document.getElementById('model-progress-bar');
       const fill = document.getElementById('model-progress-fill');
       mv.addEventListener('progress', e => {
