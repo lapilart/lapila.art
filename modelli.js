@@ -17,8 +17,9 @@ const MODELLI = [
         description: "Il primo modello. Forma essenziale da cui è tutto partito.",
         images: [
             "assets/images/models/porta/porta.png",
-            "assets/images/models/porta/porta1.png",
             "assets/images/models/porta/porta2.png",
+            "assets/images/models/porta/porta1.png",
+
         ],
         file: "assets/models/porta_v1.glb",
         downloadable: true,

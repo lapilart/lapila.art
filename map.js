@@ -79,6 +79,30 @@ document.addEventListener('DOMContentLoaded', () => {
         idx = (idx + 1) % imgs.length;
         update();
       });
+
+      const gallery = container.querySelector('.gallery');
+      let touchStartX = 0;
+      gallery.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      gallery.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) {
+          idx = dx < 0 ? (idx + 1) % imgs.length : (idx - 1 + imgs.length) % imgs.length;
+          update();
+        }
+      });
+
+      let mouseStartX = 0, mouseDragging = false;
+      gallery.addEventListener('mousedown', e => { mouseStartX = e.clientX; mouseDragging = true; });
+      gallery.addEventListener('mouseup', e => {
+        if (!mouseDragging) return;
+        mouseDragging = false;
+        const dx = e.clientX - mouseStartX;
+        if (Math.abs(dx) > 40) {
+          idx = dx < 0 ? (idx + 1) % imgs.length : (idx - 1 + imgs.length) % imgs.length;
+          update();
+        }
+      });
+      gallery.addEventListener('mouseleave', () => { mouseDragging = false; });
     }
   }
 

@@ -37,8 +37,9 @@ const PINS = [
         lng: 12.390804224284588,
         description: "In via delle gotiche troverai sicuramente qualche Pila, le altre cercale in città",
         images: [
-            "assets/images/pins/perugia/perugia-1.jpeg",
             "assets/images/pins/perugia/perugia-2.jpeg",
+            "assets/images/pins/perugia/perugia-1.jpeg",
+
             // "assets/images/pins/milano/3.jpg",
         ]
     },

@@ -1,105 +1,113 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Pila — Arte urbana 3D sui muri del mondo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Pila — Arte urbana 3D sui muri del mondo</title>
 
-  <!-- SEO -->
-  <meta name="description" content="La Pila è un progetto di arte urbana: modelli 3D stampati, colorati a mano e incollati sui muri delle città del mondo.">
-  <meta name="author" content="La Pila">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://lapilart.github.io/lapila.art/">
+    <!-- SEO -->
+    <meta name="description"
+          content="La Pila è un progetto di arte urbana: modelli 3D stampati, colorati a mano e incollati sui muri delle città del mondo.">
+    <meta name="author" content="La Pila">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://lapilart.github.io/lapila.art/">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="La Pila">
-  <meta property="og:title" content="La Pila — Arte urbana 3D sui muri del mondo">
-  <meta property="og:description" content="Modelli 3D stampati, colorati a mano e incollati sui muri delle città del mondo.">
-  <meta property="og:url" content="https://lapilart.github.io/lapila.art/">
-  <meta property="og:locale" content="it_IT">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="La Pila">
+    <meta property="og:title" content="La Pila — Arte urbana 3D sui muri del mondo">
+    <meta property="og:description"
+          content="Modelli 3D stampati, colorati a mano e incollati sui muri delle città del mondo.">
+    <meta property="og:url" content="https://lapilart.github.io/lapila.art/">
+    <meta property="og:locale" content="it_IT">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="La Pila — Arte urbana 3D">
-  <meta name="twitter:description" content="Modelli 3D stampati, colorati a mano e incollati sui muri delle città del mondo.">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="La Pila — Arte urbana 3D">
+    <meta name="twitter:description"
+          content="Modelli 3D stampati, colorati a mano e incollati sui muri delle città del mondo.">
 
-  <!-- Tema e favicon -->
-  <meta name="theme-color" content="#111111">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Tema e favicon -->
+    <meta name="theme-color" content="#111111">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <link rel="stylesheet" href="style.css">
-  <!-- model-viewer — Google's 3D web component -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- model-viewer — Google's 3D web component -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
 </head>
 <body>
 
-  <script src="nav.js"></script>
+<script src="nav.js"></script>
 
-  <div id="model-progress-bar"><div id="model-progress-fill"></div></div>
+<div id="model-progress-bar">
+    <div id="model-progress-fill"></div>
+</div>
 
-  <main class="hero">
+<main class="hero">
     <div class="hero-left">
-      <h1 class="hero-title">LA<br><span class="accent">PILA</span></h1>
+        <h1 class="hero-title">LA<br><span class="accent">PILA</span></h1>
     </div>
 
     <div class="hero-right">
-      <model-viewer
-        alt="La Pila — modello 3D"
-        loading="lazy"
-        auto-rotate
-        auto-rotate-delay="2000"
-        rotation-per-second="5deg"
-        camera-controls
-        camera-orbit="120deg"
-        touch-action="pan-y"
-        environment-image="neutral"
-        shadow-intensity="1"
-        shadow-softness="0.7"
-        exposure="0.8"
-        tone-mapping="commerce"
-        style="width:100%;height:100%;background:transparent;"
-      ></model-viewer>
+        <model-viewer
+                alt="La Pila — modello 3D"
+                loading="lazy"
+                auto-rotate
+                auto-rotate-delay="2000"
+                rotation-per-second="5deg"
+                camera-controls
+                camera-orbit="120deg"
+                touch-action="pan-y"
+                environment-image="neutral"
+                shadow-intensity="1"
+                shadow-softness="0.7"
+                exposure="0.5"
+                tone-mapping="commerce"
+                style="width:100%;height:100%;background:transparent;"
+        ></model-viewer>
     </div>
 
     <script>
-      // ── Modelli casuali homepage ──────────────────────────────────────
-      // Aggiungi qui i file .glb presenti in assets/models/pages/home/
-      const HOME_MODELS = [
-        "assets/models/pages/home/lapilahome.glb",
-      ];
+        // ── Modelli casuali homepage ──────────────────────────────────────
+        // Aggiungi qui i file .glb presenti in assets/models/pages/home/
+        const HOME_MODELS = [
+            "assets/models/pages/home/lapilahome.glb",
+            "assets/models/pages/home/pilabase.glb",
+        ];
 
-      const SESSION_KEY = "home_model";
-      let chosen = sessionStorage.getItem(SESSION_KEY);
-      if (!chosen || !HOME_MODELS.includes(chosen)) {
-        chosen = HOME_MODELS[Math.floor(Math.random() * HOME_MODELS.length)];
-        sessionStorage.setItem(SESSION_KEY, chosen);
-      }
+        const SESSION_KEY = "home_model";
+        let chosen = sessionStorage.getItem(SESSION_KEY);
+        if (!chosen || !HOME_MODELS.includes(chosen)) {
+            chosen = HOME_MODELS[Math.floor(Math.random() * HOME_MODELS.length)];
+            sessionStorage.setItem(SESSION_KEY, chosen);
+        }
 
-      const mv = document.querySelector('model-viewer');
-      mv.src = chosen;
-      // ─────────────────────────────────────────────────────────────────
+        const mv = document.querySelector('model-viewer');
+        mv.src = chosen;
+        mv.style.pointerEvents = 'none';
+        // ─────────────────────────────────────────────────────────────────
 
-      const bar = document.getElementById('model-progress-bar');
-      const fill = document.getElementById('model-progress-fill');
-      mv.addEventListener('progress', e => {
-        const p = e.detail.totalProgress * 100;
-        fill.style.width = p + '%';
-      });
-      mv.addEventListener('load', () => {
-        bar.style.opacity = '0';
-        setTimeout(() => bar.style.display = 'none', 400);
-      });
+        const bar = document.getElementById('model-progress-bar');
+        const fill = document.getElementById('model-progress-fill');
+        mv.addEventListener('progress', e => {
+            const p = e.detail.totalProgress * 100;
+            fill.style.width = p + '%';
+        });
+        mv.addEventListener('load', () => {
+            mv.style.pointerEvents = '';
+            bar.style.opacity = '0';
+            setTimeout(() => bar.style.display = 'none', 400);
+        });
     </script>
 
     <div class="hero-bar">
-      <p class="hero-desc">
-        Modelli 3D stampati, colorati a mano,<br>
-        incollati sui muri delle città del mondo.
-      </p>
-      <a href="mappa.html" class="btn">Vedi la mappa →</a>
+        <p class="hero-desc">
+            Modelli 3D stampati, colorati a mano,<br>
+            incollati sui muri delle città.
+        </p>
+        <a href="mappa.html" class="btn">Vedi la mappa →</a>
     </div>
-  </main>
+</main>
 
 </body>
 </html>
