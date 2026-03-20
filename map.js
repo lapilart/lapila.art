@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     iconAnchor: [11, 22],
   });
 
+  // ── Stato pin attivo ──
+  let activeMarkerEl = null;
+
   // ── Elementi modal ──
   const overlay    = document.getElementById('modal-overlay');
   const modalTitle = document.getElementById('modal-title');
@@ -118,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Chiude il modal ──
   function closeModal() {
     overlay.classList.remove('open');
+    if (activeMarkerEl) { activeMarkerEl.classList.remove('pin-active'); activeMarkerEl = null; }
   }
 
   closeBtn.addEventListener('click', closeModal);
@@ -131,7 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Aggiunge i pin dalla lista ──
   PINS.forEach(pin => {
     const marker = L.marker([pin.lat, pin.lng], { icon: pinIcon }).addTo(map);
-    marker.on('click', () => openModal(pin));
+    marker.on('click', () => {
+      if (activeMarkerEl) activeMarkerEl.classList.remove('pin-active');
+      activeMarkerEl = marker.getElement();
+      if (activeMarkerEl) activeMarkerEl.classList.add('pin-active');
+      openModal(pin);
+    });
   });
 
 });

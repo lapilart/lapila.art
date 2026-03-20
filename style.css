@@ -472,16 +472,29 @@ body.map-body {
 }
 
 /* Custom pin */
+@keyframes pin-glow {
+    0%, 100% { filter: drop-shadow(0 0 4px #f5e200bb) drop-shadow(0 0 8px #f5e20055); }
+    50%       { filter: drop-shadow(0 0 10px #f5e200dd) drop-shadow(0 0 18px #f5e20077); }
+}
+
 .custom-pin {
     background: none !important;
     border: none !important;
     cursor: pointer;
-    transition: transform 0.15s, filter 0.15s;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    animation: pin-glow 2.2s ease-in-out infinite;
 }
 
 .custom-pin:hover {
-    transform: scale(1.4);
-    filter: drop-shadow(0 0 6px #f5e200aa);
+    transform: scale(1.45);
+    filter: drop-shadow(0 0 14px #f5e200ee) drop-shadow(0 0 28px #f5e200aa) !important;
+    animation: none;
+}
+
+.custom-pin.pin-active {
+    transform: scale(1.6);
+    filter: drop-shadow(0 0 18px #f5e200) drop-shadow(0 0 36px #f5e200bb) !important;
+    animation: none;
 }
 
 /* ── MODAL ── */
