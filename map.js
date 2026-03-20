@@ -132,15 +132,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') closeModal();
   });
 
+  // ── Cluster group ──
+  const clusterGroup = L.markerClusterGroup({
+    maxClusterRadius: 50,
+    showCoverageOnHover: false,
+    zoomToBoundsOnClick: true,
+    spiderfyOnMaxZoom: true,
+    iconCreateFunction: cluster => L.divIcon({
+      className: 'cluster-pin',
+      html: `<div class="cluster-inner"><span>${cluster.getChildCount()}</span></div>`,
+      iconSize: [36, 36],
+      iconAnchor: [18, 18],
+    }),
+  });
+
   // ── Aggiunge i pin dalla lista ──
   PINS.forEach(pin => {
-    const marker = L.marker([pin.lat, pin.lng], { icon: pinIcon }).addTo(map);
+    const marker = L.marker([pin.lat, pin.lng], { icon: pinIcon });
     marker.on('click', () => {
       if (activeMarkerEl) activeMarkerEl.classList.remove('pin-active');
       activeMarkerEl = marker.getElement();
       if (activeMarkerEl) activeMarkerEl.classList.add('pin-active');
       openModal(pin);
     });
+    clusterGroup.addLayer(marker);
   });
+
+  map.addLayer(clusterGroup);
 
 });

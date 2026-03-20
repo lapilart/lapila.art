@@ -473,8 +473,8 @@ body.map-body {
 
 /* Custom pin */
 @keyframes pin-glow {
-    0%, 100% { filter: drop-shadow(0 0 4px #f5e200bb) drop-shadow(0 0 8px #f5e20055); }
-    50%       { filter: drop-shadow(0 0 10px #f5e200dd) drop-shadow(0 0 18px #f5e20077); }
+    0%, 100% { filter: drop-shadow(0 0 3px #f5e20088) drop-shadow(0 0 6px #f5e20022); }
+    50%       { filter: drop-shadow(0 0 6px #f5e200aa) drop-shadow(0 0 12px #f5e20044); }
 }
 
 .custom-pin {
@@ -486,15 +486,44 @@ body.map-body {
 }
 
 .custom-pin:hover {
-    transform: scale(1.45);
-    filter: drop-shadow(0 0 14px #f5e200ee) drop-shadow(0 0 28px #f5e200aa) !important;
+    transform: scale(1.55);
+    filter: drop-shadow(0 0 20px #f5e200ff) drop-shadow(0 0 40px #f5e200cc) drop-shadow(0 0 60px #f5e20066) !important;
     animation: none;
 }
 
 .custom-pin.pin-active {
-    transform: scale(1.6);
-    filter: drop-shadow(0 0 18px #f5e200) drop-shadow(0 0 36px #f5e200bb) !important;
+    transform: scale(1.7);
+    filter: drop-shadow(0 0 22px #f5e200ff) drop-shadow(0 0 44px #f5e200dd) drop-shadow(0 0 70px #f5e20088) !important;
     animation: none;
+}
+
+/* Cluster pin */
+.cluster-pin {
+    background: none !important;
+    border: none !important;
+    cursor: pointer;
+}
+
+.cluster-inner {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #111;
+    border: 2px solid #f5e200;
+    box-shadow: 0 0 10px #f5e200aa, 0 0 22px #f5e20044;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #f5e200;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cluster-pin:hover .cluster-inner {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px #f5e200ff, 0 0 45px #f5e200cc;
 }
 
 /* ── MODAL ── */
