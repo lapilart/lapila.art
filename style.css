@@ -417,13 +417,22 @@ nav {
 .modello-download {
     display: inline-block;
     margin-top: 1rem;
-    padding: 0.45rem 1rem;
-    background: var(--accent);
-    color: var(--bg);
+    padding: 0.7rem 1.4rem;
+    border: 1px solid var(--text);
+    background: transparent;
+    color: var(--text);
     font-size: 0.82rem;
     font-weight: 700;
     text-decoration: none;
     letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.modello-download:hover {
+    background: var(--text);
+    color: var(--bg);
 }
 
 /* ── MAP PAGE ── */
