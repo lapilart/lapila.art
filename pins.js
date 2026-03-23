@@ -31,6 +31,21 @@ const PINS = [
 
     {
         id: 2,
+        title: "Roma",
+        date: "2026",
+        lat: 41.93056725227886,
+        lng: 12.512019909278726,
+        description: "Quanto se bella Romaaaa",
+        images: [
+            "assets/images/pins/roma/roma1.jpeg",
+            "assets/images/pins/roma/roma2.jpeg",
+
+            // "assets/images/pins/milano/3.jpg",
+        ]
+    },
+
+    {
+        id: 3,
         title: "Perugia",
         date: "2026",
         lat: 43.110750348606935,
