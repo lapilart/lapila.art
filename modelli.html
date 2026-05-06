@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pile — La Pila</title>
+
+  <!-- SEO -->
+  <meta name="description" content="I modelli 3D de La Pila: oggetti stampati, colorati a mano e incollati sui muri delle città. Scarica i modelli open source.">
+  <meta name="keywords" content="modelli 3D da scaricare, La Pila modelli, stampa 3D arte urbana, oggetti 3D open source, La porta 3D, L'onda 3D, modelli per stampa 3D">
+  <meta name="author" content="La Pila">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lapila.art/modelli.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="La Pila">
+  <meta property="og:title" content="Pile — La Pila: arte urbana stampata e colorata a mano">
+  <meta property="og:description" content="I modelli 3D de La Pila: oggetti stampati, colorati a mano e incollati sui muri delle città. Alcuni disponibili per il download.">
+  <meta property="og:url" content="https://lapila.art/modelli.html">
+  <meta property="og:image" content="https://lapila.art/assets/images/models/porta/porta.png">
+  <meta property="og:image:alt" content="La porta — modello 3D de La Pila">
+  <meta property="og:locale" content="it_IT">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pile — La Pila">
+  <meta name="twitter:description" content="I modelli 3D de La Pila: oggetti stampati, colorati a mano e incollati sui muri delle città.">
+  <meta name="twitter:image" content="https://lapila.art/assets/images/models/porta/porta.png">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Pile — La Pila",
+    "description": "I modelli 3D de La Pila: oggetti stampati, colorati a mano e incollati sui muri delle città. Alcuni disponibili per il download.",
+    "url": "https://lapila.art/modelli.html",
+    "inLanguage": "it-IT",
+    "hasPart": [
+      {
+        "@type": "VisualArtwork",
+        "name": "La porta",
+        "description": "Il primo modello de La Pila. Forma essenziale da cui è tutto partito. Disponibile per il download.",
+        "artMedium": "Stampa 3D, pittura a mano",
+        "artworkSurface": "Muri urbani",
+        "image": "https://lapila.art/assets/images/models/porta/porta.png",
+        "url": "https://lapila.art/modelli.html",
+        "creator": {
+          "@type": "Organization",
+          "name": "La Pila",
+          "url": "https://lapila.art/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "description": "Scarica il file .glb del modello La porta gratuitamente"
+        }
+      },
+      {
+        "@type": "VisualArtwork",
+        "name": "L'onda",
+        "description": "La pila non si fa comandare. Modello 3D stampato e colorato a mano.",
+        "artMedium": "Stampa 3D, pittura a mano",
+        "artworkSurface": "Muri urbani",
+        "image": "https://lapila.art/assets/images/models/onda/lapila_surfonda.png",
+        "url": "https://lapila.art/modelli.html",
+        "creator": {
+          "@type": "Organization",
+          "name": "La Pila",
+          "url": "https://lapila.art/"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tema e favicon -->
+  <meta name="theme-color" content="#111111">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="i18n.js"></script>
+
+</head>
+<body>
+
+  <script src="nav.js"></script>
+
+  <div class="modelli-wrap">
+    <span class="manifesto-label" data-i18n="modelli.label">Pile</span>
+    <div id="modelli-grid" class="modelli-grid"></div>
+  </div>
+
+  <script src="modelli.js"></script>
+  <script>
+    const grid = document.getElementById('modelli-grid');
+
+    MODELLI.forEach(m => {
+      const card = document.createElement('div');
+      card.className = 'modello-card';
+
+      // ── Galleria immagini ──
+      let mediaHTML = '';
+      if (m.images && m.images.length > 0) {
+        if (m.images.length === 1) {
+          mediaHTML = `
+            <div class="modello-media">
+              <img src="${m.images[0]}" alt="${m.title}" class="modello-img">
+            </div>`;
+        } else {
+          const slides = m.images.map((src, i) =>
+            `<img src="${src}" alt="${m.title} ${i + 1}" class="modello-img modello-slide${i === 0 ? ' active' : ''}" data-index="${i}">`
+          ).join('');
+          const dots = m.images.map((_, i) =>
+            `<button class="modello-dot${i === 0 ? ' active' : ''}" data-index="${i}" aria-label="Immagine ${i + 1}"></button>`
+          ).join('');
+          mediaHTML = `
+            <div class="modello-media modello-slider" data-current="0">
+              ${slides}
+              <button class="modello-arrow modello-arrow-prev" aria-label="Precedente">&#8592;</button>
+              <button class="modello-arrow modello-arrow-next" aria-label="Successiva">&#8594;</button>
+              <div class="modello-dots">${dots}</div>
+            </div>`;
+        }
+      } else {
+        mediaHTML = `<div class="modello-media modello-media--empty"></div>`;
+      }
+
+      // ── Download ──
+      const downloadHTML = m.downloadable
+        ? `<a class="modello-download" href="${m.file}" download data-i18n="modelli.download">${window.I18N ? window.I18N.t('modelli.download') : 'Scarica modello'}</a>`
+        : '';
+
+      // ── Descrizione bilingue ──
+      const descIt = m.description || '';
+      const descEn = m.descriptionEn || m.description || '';
+      const descShow = (window.I18N && window.I18N.lang === 'en' && m.descriptionEn) ? descEn : descIt;
+
+      card.innerHTML = `
+        ${mediaHTML}
+        <div class="modello-info">
+          <h2 class="modello-title">${m.title}</h2>
+          <p class="modello-desc" data-i18n-it="${descIt}" data-i18n-en="${descEn}">${descShow}</p>
+          ${downloadHTML}
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    // ── Logica slider ──
+    document.querySelectorAll('.modello-slider').forEach(slider => {
+      let current = 0;
+      const slides = slider.querySelectorAll('.modello-slide');
+      const dots = slider.querySelectorAll('.modello-dot');
+      const total = slides.length;
+
+      function goTo(n) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (n + total) % total;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      slider.querySelector('.modello-arrow-prev').addEventListener('click', () => goTo(current - 1));
+      slider.querySelector('.modello-arrow-next').addEventListener('click', () => goTo(current + 1));
+      dots.forEach(dot => dot.addEventListener('click', () => goTo(+dot.dataset.index)));
+
+      let touchStartX = 0;
+      slider.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      slider.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+      });
+
+      let mouseStartX = 0, mouseDragging = false;
+      slider.addEventListener('mousedown', e => { mouseStartX = e.clientX; mouseDragging = true; });
+      slider.addEventListener('mouseup', e => {
+        if (!mouseDragging) return;
+        mouseDragging = false;
+        const dx = e.clientX - mouseStartX;
+        if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+      });
+      slider.addEventListener('mouseleave', () => { mouseDragging = false; });
+    });
+  </script>
+
+</body>
+</html>

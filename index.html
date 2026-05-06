@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Pila — Arte urbana 3D sui muri del mondo</title>
+
+    <!-- SEO -->
+    <meta name="description"
+          content="La Pila è un progetto di arte urbana: modelli 3D stampati, colorati a mano e incollati sui muri delle città del mondo.">
+    <meta name="keywords" content="arte urbana, street art, modelli 3D, stampa 3D, arte contemporanea, installazioni urbane, La Pila, graffiti alternativi, oggetti sui muri">
+    <meta name="author" content="La Pila">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://lapila.art/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="La Pila">
+    <meta property="og:title" content="La Pila — Arte urbana 3D sui muri del mondo">
+    <meta property="og:description"
+          content="Modelli 3D stampati, colorati a mano e incollati sui muri delle città del mondo.">
+    <meta property="og:url" content="https://lapila.art/">
+    <meta property="og:image" content="https://lapila.art/assets/images/models/porta/porta.png">
+    <meta property="og:image:alt" content="La Pila — modello 3D stampato e colorato a mano">
+    <meta property="og:locale" content="it_IT">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="La Pila — Arte urbana 3D">
+    <meta name="twitter:description"
+          content="Modelli 3D stampati, colorati a mano e incollati sui muri delle città del mondo.">
+    <meta name="twitter:image" content="https://lapila.art/assets/images/models/porta/porta.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "La Pila",
+        "url": "https://lapila.art/",
+        "description": "La Pila è un progetto di arte urbana: modelli 3D stampati, colorati a mano e incollati sui muri delle città del mondo.",
+        "inLanguage": "it-IT"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "La Pila",
+        "url": "https://lapila.art/",
+        "email": "lapila.art@gmail.com",
+        "description": "Progetto indipendente di arte urbana: oggetti 3D stampati, dipinti a mano e installati sui muri delle città senza chiedere permesso.",
+        "foundingDate": "2026",
+        "areaServed": "IT",
+        "knowsAbout": ["arte urbana", "stampa 3D", "street art", "installazioni urbane"]
+      }
+    ]
+    </script>
+
+    <!-- Tema e favicon -->
+    <meta name="theme-color" content="#111111">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="i18n.js"></script>
+    <!-- model-viewer — Google's 3D web component -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+</head>
+<body>
+
+<script src="nav.js"></script>
+
+<div id="model-progress-bar">
+    <div id="model-progress-fill"></div>
+</div>
+
+<main class="hero">
+    <div class="hero-left">
+        <h1 class="hero-title">LA<br><span class="accent">PILA</span></h1>
+    </div>
+
+    <div class="hero-right">
+        <model-viewer
+                alt="La Pila — modello 3D"
+                loading="lazy"
+                auto-rotate
+                auto-rotate-delay="2000"
+                rotation-per-second="5deg"
+                camera-controls
+                camera-orbit="120deg"
+                touch-action="pan-y"
+                environment-image="neutral"
+                shadow-intensity="1"
+                shadow-softness="0.7"
+                exposure="0.5"
+                tone-mapping="commerce"
+                style="width:100%;height:100%;background:transparent;"
+        ></model-viewer>
+    </div>
+
+    <script>
+        // ── Modelli casuali homepage ──────────────────────────────────────
+        // Aggiungi qui i file .glb presenti in assets/models/pages/home/
+        const HOME_MODELS = [
+          //  "assets/models/pages/home/lapilahome.glb",
+            "assets/models/pages/home/pilabase.glb",
+        ];
+
+        const SESSION_KEY = "home_model";
+        let chosen = sessionStorage.getItem(SESSION_KEY);
+        if (!chosen || !HOME_MODELS.includes(chosen)) {
+            chosen = HOME_MODELS[Math.floor(Math.random() * HOME_MODELS.length)];
+            sessionStorage.setItem(SESSION_KEY, chosen);
+        }
+
+        const mv = document.querySelector('model-viewer');
+        mv.src = chosen;
+        mv.style.pointerEvents = 'none';
+        // ─────────────────────────────────────────────────────────────────
+
+        const bar = document.getElementById('model-progress-bar');
+        const fill = document.getElementById('model-progress-fill');
+        mv.addEventListener('progress', e => {
+            const p = e.detail.totalProgress * 100;
+            fill.style.width = p + '%';
+        });
+        mv.addEventListener('load', () => {
+            mv.style.pointerEvents = '';
+            bar.style.opacity = '0';
+            setTimeout(() => bar.style.display = 'none', 400);
+        });
+    </script>
+
+    <div class="hero-bar">
+        <p class="hero-desc" data-i18n="home.desc">
+            Modelli 3D stampati, colorati a mano,<br>
+            incollati sui muri delle città.
+        </p>
+        <a href="mappa.html" class="btn" data-i18n="home.cta">Vedi la mappa →</a>
+    </div>
+</main>
+
+</body>
+</html>

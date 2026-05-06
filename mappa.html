@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mappa — La Pila</title>
+
+  <!-- SEO -->
+  <meta name="description" content="La mappa mondiale de La Pila: scopri dove sono stati installati i modelli 3D nelle città del mondo. Torino, Perugia e oltre.">
+  <meta name="keywords" content="mappa arte urbana, installazioni La Pila, street art città italiane, Torino street art, Perugia arte urbana, modelli 3D installati">
+  <meta name="author" content="La Pila">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lapila.art/mappa.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="La Pila">
+  <meta property="og:title" content="Mappa installazioni — La Pila: arte urbana 3D nelle città">
+  <meta property="og:description" content="Scopri dove sono stati installati i modelli 3D de La Pila: Torino, Perugia e le città del mondo.">
+  <meta property="og:url" content="https://lapila.art/mappa.html">
+  <meta property="og:image" content="https://lapila.art/assets/images/pins/torino/torino-1.jpeg">
+  <meta property="og:image:alt" content="Installazione de La Pila a Torino">
+  <meta property="og:locale" content="it_IT">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mappa installazioni — La Pila">
+  <meta name="twitter:description" content="Scopri dove sono stati installati i modelli 3D de La Pila nelle città del mondo.">
+  <meta name="twitter:image" content="https://lapila.art/assets/images/pins/torino/torino-1.jpeg">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Installazioni de La Pila nel mondo",
+    "description": "Mappa mondiale delle installazioni di arte urbana de La Pila: oggetti 3D stampati e incollati sui muri delle città.",
+    "url": "https://lapila.art/mappa.html",
+    "numberOfItems": 2,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Place",
+          "name": "Installazione La Pila — Torino",
+          "description": "La prima Pila. Installazione di arte urbana 3D a Torino.",
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 45.0709,
+            "longitude": 7.6853
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Torino",
+            "addressCountry": "IT"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Place",
+          "name": "Installazione La Pila — Perugia",
+          "description": "Installazione de La Pila a Perugia, in via delle gotiche.",
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 43.1108,
+            "longitude": 12.3908
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Perugia",
+            "addressCountry": "IT"
+          }
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tema e favicon -->
+  <meta name="theme-color" content="#111111">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <script src="i18n.js"></script>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Marker cluster CSS (solo animazioni base, stile custom in style.css) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="map-body">
+
+  <script src="nav.js"></script>
+
+  <div id="map"></div>
+
+  <!-- Modal -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal">
+
+      <!-- Galleria immagini -->
+      <div id="gallery-container"></div>
+
+      <!-- Intestazione -->
+      <div class="modal-header">
+        <div>
+          <div id="modal-title" class="modal-title"></div>
+          <div id="modal-date" class="modal-date"></div>
+        </div>
+        <button id="modal-close" class="modal-close">&#215;</button>
+      </div>
+
+      <!-- Descrizione -->
+      <div class="modal-body">
+        <p id="modal-desc" class="modal-desc"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Marker cluster JS -->
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <!-- Dati pin -->
+  <script src="pins.js"></script>
+  <!-- Logica mappa -->
+  <script src="map.js"></script>
+
+</body>
+</html>
